@@ -1,0 +1,122 @@
+@import './reset.min.scss';
+
+:root {
+	--main-text: #273266;
+	--white: #fff;
+	--main-blue: #4160e1;
+	--green: #a0c089;
+	--gray-text: #717171;
+  --border: #EBEBEB;
+  --shadow: 0 1px 2px rgba(22, 33, 54, .16)
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 130%;
+  color: var(--main-text);
+  overflow-x: clip;
+}
+
+.container {
+  max-width: 1210px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: clamp(60px, 12vw, 100px);
+}
+
+.section__title {
+  font-size: clamp(20px, 6vw, 28px);
+  font-weight: 500;
+  line-height: 120%;
+  margin-bottom: 25px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 13px 13px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--white);
+  color: var(--main-text);
+  transition: .3s;
+}
+
+.btn:hover {
+  background-color: var(--main-blue);
+  color: var(--white);
+  font-weight: 500;
+  border-color: var(--main-blue);
+}
+
+.btn_border {
+  border-color: var(--main-text);
+}
+
+.btn_blue {
+  background-color: var(--main-blue);
+  color: var(--white);
+  font-weight: 500;
+  border-color: var(--main-blue);
+}
+
+.btn_blue:hover {
+  background-color: var(--white);
+  color: var(--main-text);
+  border-color: var(--main-text);
+}
+
+.btn_gradient {
+  border-color: transparent;
+  background: linear-gradient(90deg, #1624EC, #777FED);
+  color: var(--white);
+  padding: 13px 37px;
+}
+.btn_gradient:hover {
+  background: var(--white);
+  color: var(--main-text);
+  border-color: transparent;
+}
+.btn_trancparent {
+  background-color: transparent;
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.see-more {
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+  font-weight: 600;
+  padding-right: 14px;  
+}
+
+.see-more:hover::after {
+  right: 0;
+}
+
+.see-more::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  width: 6px;
+  height: 10px;
+  background: url('../assets/images/see-more.svg') no-repeat;
+  transition: .3s;
+}
