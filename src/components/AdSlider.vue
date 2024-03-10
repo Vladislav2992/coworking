@@ -1,6 +1,7 @@
 <template>
-    <section class="ad-slider" style="background-image: url('/ad-bg.jpg')">
-        <div class="container">
+    <section class="ad-slider">
+        <div class="cut">
+            <div class="container">
             <div class="wrapper">
                 <div class="text">
                     <div class="logo">
@@ -21,38 +22,165 @@
                     <img src="/ad-img.png" alt="">
                 </div>
             </div>
+
+            <div class="slider-nav__buttons">
+                <img src="/nav-arrow.svg" alt="" class="slider-nav-prev">
+                <img src="/nav-arrow.svg" alt="" class="slider-nav-next">
+            </div>
+           
         </div>
+        </div>
+        <div class="pagination">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
     </section>
 </template>
 <style lang="scss" scoped>
-    .ad-slider {
-        background-repeat: no-repeat;
-        background-size: cover;
+    .ad-slider {        
+        background: #f0f0f0;
+        position: relative;
+        margin-bottom: clamp(85px, 12vw, 100px);
     }
+    
+    .cut {
+        overflow: hidden;
+
+    }    
+    .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 15px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 1200px;
+            height: clamp(384px, 45vw, 562px);
+            background: linear-gradient(44deg, rgba(48, 91, 162, 0.8) 0%, rgba(48, 91, 162, 0) 100%);
+            transform: rotate(-55deg);
+            left: -400px;
+            z-index: 0;
+        }
+    }
+    
     .wrapper {
         display: grid;
         grid-template-columns: 5fr 7fr;
         align-items: center;
         color: var(--white);
-        padding-bottom: 50px;
     }
+    .text {
+            position: relative;
+            z-index: 2;
+        }
     .title {
-        font-size: 36px;
+        font-size: clamp(24px, 5vw, 36px);
         line-height: 100%;
         font-weight: 600;
         margin: 10px 0 20px 0;
     }
     p {
         font-size: 16px;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
     }
-    @media(max-width:650px) {
+    .img {
+            position:relative;
+            z-index: 1;
+        }
+
+    .slider-nav__buttons {
+        position: absolute;
+        top: 87%;
+        left: 0px;
+        right: 0px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 5;
+    }   
+
+    .slider-nav-prev, 
+    .slider-nav-next {
+        cursor: pointer;
+        transition: .3s;
+        opacity: .3;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .slider-nav-prev {
+        transform: rotate(180deg);
+    } 
+
+    .pagination {
+        display: flex;
+        gap: 6px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -25px;
+        display: none;
+
+        span {
+            width: 10px;
+            height: 10px;
+            background-color: var(--gray-text);
+            border-radius: 50%;
+            opacity: .3;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    @media(min-width:1400px) {
+        .slider-nav__buttons {           
+            top: 50%;
+            left: -50px;
+            right: -50px;            
+        } 
+    }
+
+    @media(max-width:650px) { 
+        
+        .container::before {
+            left: -466px;
+        }
         .wrapper {
         grid-template-columns: 1fr;
+        position: relative;
 
-        .btn {
-            width: 100%;
+            .btn {
+                width: 100%;
+                opacity: .7;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
+        
+        p {
+            margin-bottom: 70px;
+        }
+        .img {
+            position:absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(260px, 55vw, 360px);
+        }
+        .slider-nav__buttons {           
+            display: none;           
+        } 
+        .pagination {
+            display: flex;
         }
     }
 </style>

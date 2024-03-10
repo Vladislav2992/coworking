@@ -70,7 +70,7 @@
 .footer {
     font-size: 12px;
     background-color: var(--white);
-    padding-bottom: 15px;
+    padding: 40px 0 15px 0;
 
     .container {
         display: grid;
@@ -133,7 +133,10 @@
         gap: 10px;
         margin-left: 0;
     }
-
+    
+    .footer__menu-list {
+        text-align: center;
+    }
     .copyright,
     .privacy-policy {
         text-align: center;

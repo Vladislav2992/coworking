@@ -1,3 +1,7 @@
+<script setup>
+import Tag from './Tag.vue'
+</script>
+
 <template>
     <section class="hero" style="background-image: url('/main.jpg');">
         <div class="container">
@@ -8,11 +12,11 @@
             <div class="hero__tags-wrapper">
                 <h2 class="hero__tegs-title">Коворкинги Москвы:</h2>
                 <div class="hero__tags">
-                    <div class="tag">IT Специалисты</div>
-                    <div class="tag">Мастерские</div>
-                    <div class="tag">Кабинет психолога</div>
-                    <div class="tag">Офисы</div>
-                    <div class="tag">Бьюти-коворкинг</div>
+                    <Tag name="IT Специалисты"/>
+                    <Tag name="Мастерские"/>
+                    <Tag name="Кабинет психолога"/>
+                    <Tag name="Офисы"/>
+                    <Tag name="Бьюти-коворкинг"/>
                 </div>
             </div>
         </div>
@@ -21,7 +25,7 @@
 
 <style lang="scss">
     .hero {
-        height: clamp(467px, 28vw, 538px);
+        height: clamp(467px, 45vw, 538px);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -37,6 +41,7 @@
             min-width: 247px;
             padding: 13px;
             border: none;
+            font-size: 16px;
         }
     }
 
@@ -72,20 +77,13 @@
         gap: 5px;
     }
 
-    .tag {
-        padding: 7px 27px;
-        background-color: var(--border);
-        border-radius: 30px;
-        font-size: 14px;
-        cursor: pointer;
-    }
 
     @media(max-width:1024px) {
         .hero__tags-wrapper {
             display: none;
         }
     }
-    @media(max-width:400px) {
+    @media(max-width:450px) {
         .hero .btn {
             width: 100%;
         }

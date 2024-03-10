@@ -39,6 +39,11 @@ const isLiked = ref(false)
         border-radius: 8px;
         display: flex;
         flex-direction: column;
+        transition: .3s;
+
+        &:hover {
+            box-shadow: 0 1px 2px rgba(22, 33, 54, 0.16);
+        }
     }
     .image {
         border-radius: 4px;
@@ -98,6 +103,7 @@ const isLiked = ref(false)
 
         .btn_gradient:hover {
             border-color: var(--main-text);
+            border-right: 1px solid var(--main-text);
         }
     }
     .price {

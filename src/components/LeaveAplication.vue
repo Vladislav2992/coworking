@@ -16,8 +16,9 @@
 
 <style lang="scss">
     .leave-aplication {
+        padding: 0 15px;
         .container {
-            background: linear-gradient(90deg, #1624EC, #777FED);
+            background: linear-gradient(44deg, rgba(22, 36, 236, 0.8) 0%, rgba(119, 127, 237, 0.8) 66.46%, rgba(233, 233, 239, 0.8) 100%);
             border-radius: 8px;
             padding: 30px 25px;
             display: grid;
@@ -55,7 +56,7 @@
             padding: 30px 12px;
         }
         .leave-aplication__buttons {
-            justify-content: space-between;
+            gap: 20px;
         }
     }
     @media(max-width:440px) {       

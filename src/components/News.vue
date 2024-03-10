@@ -28,7 +28,7 @@
         justify-content: space-between;
     }
     .date {
-        color: #8498A5;
+        color: var(--gray-text);
         font-size: 13px;
     }    
 </style>
