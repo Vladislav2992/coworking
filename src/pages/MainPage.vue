@@ -1,10 +1,10 @@
 <script setup>
-import MainBanner from '../components/MainBanner.vue';
-import FittingVariants from '../components/FittingVariants.vue';
-import AdSlider from '../components/AdSlider.vue';
+import MainBanner from '../components/MainPage/MainBanner.vue';
+import FittingVariants from '../components/MainPage/FittingVariants.vue';
+import AdSlider from '../components/Advertising/AdSlider.vue';
 import NewsBlock from '../components/NewsBlock.vue';
 import LeaveAplication from '@/components/LeaveAplication.vue';
-import Tarifes from '@/components/Tarifes.vue';
+import Tarifes from '@/components/MainPage/Tarifes.vue';
 
 </script> 
 

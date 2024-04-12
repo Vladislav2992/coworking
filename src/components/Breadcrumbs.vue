@@ -10,6 +10,11 @@
     .breadcrumbs {
         a {
             font-size: clamp(10px, 4vw, 12px);
+            transition: color .3s;
+
+            &:hover {
+                color: var(--gray-text);
+            }
 
             &:last-child {
                 color: var(--gray-text);

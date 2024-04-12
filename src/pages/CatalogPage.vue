@@ -1,17 +1,24 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
-import CoworkingCard from '@/components/CoworkingCard.vue';
+import CoworkingCard from '@/components/CatalogPage/CoworkingCard.vue';
 import LeaveAplication from '@/components/LeaveAplication.vue';
 import Pagination from '@/components/Pagination.vue';
-import EventsCalendar from '@/components/EventsCalendar.vue';
+import EventsCalendar from '@/components/CatalogPage/EventsCalendar.vue';
 import NewsBlock from '@/components/NewsBlock.vue';
-import Filters from '../components/Filters.vue'
+import Filters from '../components/CatalogPage/Filters.vue'
+import Dropdown from '@/components/Dropdown.vue';
 
 const isFiltersOpen = ref(false)
-const isSortListOpen = ref(false)
 
+const sortBy = [
+    {id:'sort-by-popuar', name:'Сначала популярные'},
+    {id:'sort-by-best-rating', name:'Сначала с лучшей оценкой'},
+    {id:'sort-by-closest', name:'Сначала ближайшие'},
+    {id:'sort-by-farest', name:'Сначала дальнейшие'},
+    {id:'sort-by-in-demand', name:'Сначала пользующиеся спросом'},
+]
 const blockBody = (e) => {
     e.preventDefault();   
    const body =  document.querySelector('body')
@@ -24,6 +31,27 @@ const blockBody = (e) => {
     isFiltersOpen.value = true 
    }
 }
+
+onMounted(()=>{
+    const filters = document.querySelector('.filters-sticky');
+
+    if(window.innerWidth > 1150) {        
+        window.addEventListener('scroll', ()=>{
+            if (window.scrollY < 600) {
+                filters.style.position = 'static'
+                filters.style.marginBottom = 'auto'
+                filters.style.marginTop = '0'
+            } else if(window.scrollY > 600 && window.scrollY < 2100) {
+                filters.style.position = 'fixed'
+                filters.style.top = '-371px'
+            } else if (window.scrollY > 2100) {
+                filters.style.position = 'static'
+                filters.style.marginBottom = '0'
+                filters.style.marginTop = 'auto'
+            }
+        })        
+    }
+})
 </script>
 
 <template>    
@@ -45,25 +73,8 @@ const blockBody = (e) => {
 
                     <div class="page__sort">
                         <div class="sorting">
-                            <button :class="{'sorting-title' : true, 'active' : isSortListOpen}" @click="isSortListOpen = !isSortListOpen">Сортировать</button>
-                            <div class="sorting-variants"> 
-                                <input type="radio" name="sorting" class="sort-input-radio" id="sort-input-radio-1">
-                                <label for="sort-input-radio-1" class="sort-variant">Сначала популярные</label>
-                                
-                                <input type="radio" name="sorting" class="sort-input-radio" id="sort-input-radio-2">
-                                <label for="sort-input-radio-2" class="sort-variant">Сначала с лучшей оценкой</label>
-
-                                <input type="radio" name="sorting" class="sort-input-radio" id="sort-input-radio-3">
-                                <label for="sort-input-radio-3" class="sort-variant">Сначала ближайшие</label>
-
-                                <input type="radio" name="sorting" class="sort-input-radio" id="sort-input-radio-4">
-                                <label for="sort-input-radio-4" class="sort-variant">Сначала дальнейшие</label>
-
-                                <input type="radio" name="sorting" class="sort-input-radio" id="sort-input-radio-5">
-                                <label for="sort-input-radio-5" class="sort-variant">Сначала пользующиеся спросом</label>
-                            </div>
-                        </div>
-                        
+                            <Dropdown :dropdownsVariants="sortBy"/>
+                        </div> 
                         <span class="filter-mobile-btn" @click="blockBody">Фильтры</span>
                     </div>
 
@@ -92,9 +103,25 @@ const blockBody = (e) => {
             padding: 0;
             margin-bottom: 30px;
             .container {
-                grid-template-columns: auto 370px;
+                grid-template-columns: auto 350px;
             }
             
+        }
+
+        .leave-aplication__title {
+            margin-bottom: 14px;
+        }
+
+        .leave-aplication__description {
+            font-size: 14px;
+        }
+
+        .leave-aplication__buttons {
+            margin-left: auto;
+
+            .btn {
+                padding: 13px 36px;
+            }
         }
         .page__pagination {
             grid-column: 1/-1;
@@ -156,9 +183,12 @@ const blockBody = (e) => {
     }
 
     .page__sort {
-        margin-bottom: 20px;
         display: flex;
         justify-content: space-between;
+
+        .dropdowns-variants {
+            left: 0;
+        }
     }
 
     .sorting {
@@ -173,7 +203,7 @@ const blockBody = (e) => {
         background-color: transparent;
         text-align: left;
         position: relative;
-        font-weight: 50;
+        font-weight: 500;
         
 
         &::after {

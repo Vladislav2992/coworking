@@ -25,12 +25,18 @@
         display: flex;
         gap: 18px;
         align-items: center;
+        justify-content: center;
         margin: 0 auto;
 
         span {
             font-size: 16px;
             color: var(--gray-text);
             cursor: pointer;
+            transition: .3s;
+
+            &:hover {
+                color: var(--main-blue);
+            }
             &.active{
                 color: var(--white);
                 background-color: var(--main-text);

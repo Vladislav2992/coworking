@@ -24,6 +24,7 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             align-items: center;
+            max-width: 1180px;
         }
     }
     
